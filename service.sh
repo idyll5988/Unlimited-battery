@@ -12,7 +12,7 @@ sleep 1
 done
 }
 sdcard_rw
-#android SystemUI launcher 优化器
-for a in $(pm list packages|grep android);do pm log-visibility --disable $a&dumpsys deviceidle whitelist +$a&am set-bg-restriction-level $a unrestricted&am service-restart-backoff enable $a&done& >/dev/null 2>&1&
-for a in $(pm list packages|grep systemui);do pm log-visibility --disable $a&dumpsys deviceidle whitelist +$a&am set-bg-restriction-level $a unrestricted&am service-restart-backoff enable $a&done& >/dev/null 2>&1&
-for a in $(pm list packages|grep launcher);do pm log-visibility --disable $a&dumpsys deviceidle whitelist +$a&am set-bg-restriction-level $a unrestricted&am service-restart-backoff enable $a&done& >/dev/null 2>&1&
+for a in $(pm list packages|grep -w 'android');do am set-bg-restriction-level $a unrestricted&done& >/dev/null 2>&1&
+for a in $(pm list packages|grep -w 'com.android.systemui');do am set-bg-restriction-level $a unrestricted&done& >/dev/null 2>&1&
+for a in $(pm list packages|grep -w 'com.android.settings');do am set-bg-restriction-level $a unrestricted&done& >/dev/null 2>&1&
+for a in $(pm list packages|grep -w 'com.sec.android.app.launcher');do am set-bg-restriction-level $a unrestricted&done& >/dev/null 2>&1&
