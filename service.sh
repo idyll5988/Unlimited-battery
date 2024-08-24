@@ -12,7 +12,7 @@ sleep 1
 done
 }
 sdcard_rw
-for a in $(pm list packages|grep -w 'android');do am set-bg-restriction-level $a unrestricted&am set-battery-restriction-level $a unrestricted&done& >/dev/null 2>&1&
-for a in $(pm list packages|grep -w 'com.android.systemui');do am set-bg-restriction-level $a unrestricted&am set-battery-restriction-level $a unrestricted&done& >/dev/null 2>&1&
-for a in $(pm list packages|grep -w 'com.android.settings');do am set-bg-restriction-level $a unrestricted&am set-battery-restriction-level $a unrestricted&done& >/dev/null 2>&1&
-for a in $(pm list packages|grep -w 'com.sec.android.app.launcher');do am set-bg-restriction-level $a unrestricted&am set-battery-restriction-level $a unrestricted&done& >/dev/null 2>&1&
+for a in $(pm list packages -s | grep 'android'); do su root -c "su -c \"am set-battery-restriction-level $a unrestricted\""&done >/dev/null 2>&1
+for a in $(pm list packages -s | grep 'com.android.systemui'); do su root -c "su -c \"am set-battery-restriction-level $a unrestricted\""&done >/dev/null 2>&1
+for a in $(pm list packages -s | grep 'com.android.settings'); do su root -c "su -c \"am set-battery-restriction-level $a unrestricted\""&done >/dev/null 2>&1
+for a in $(pm list packages -s | grep 'com.sec.android.app.launcher'); do su root -c "su -c \"am set-battery-restriction-level $a unrestricted\""&done >/dev/null 2>&1
