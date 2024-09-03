@@ -12,7 +12,7 @@ sleep 1
 done
 }
 sdcard_rw
-for a in $(pm list packages -s | grep -E 'android|com.android.systemui|com.android.settings|com.sec.android.app.launcher'); do
+for a in $(pm list packages -s | grep -E 'android|com.android.systemui|com.samsung.android.biometrics.app.setting|com.sec.android.app.launcher'); do
     su root -c su -c "dumpsys deviceidle whitelist +$a" &
 	su root -c "su -c \"am set-battery-restriction-level $a unrestricted\""
 done >/dev/null 2>&1
